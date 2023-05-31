@@ -31,6 +31,9 @@ export default class App extends Component {
       name: sentContact.name,
       number: sentContact.number,
     };
+    this.setState((prefState) => ({
+      contacts: [...prefState.contacts, user]
+    })
   };
 
   onFilterChange = (event) => {
