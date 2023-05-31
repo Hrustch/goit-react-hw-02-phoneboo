@@ -1,47 +1,32 @@
 import React, { Component } from 'react';
 import { Section } from './PhoneBook/Section';
-import { Phonebook } from './PhoneBook/PhonebookInput';
+import { PhonebookInput } from './PhoneBook/PhonebookInput';
 import { PhonebookContacts } from './PhoneBook/PhonebookContacts';
 import { nanoid } from 'nanoid';
 import { PhonebookFilter } from './PhoneBook/PhonebookFilter';
 
 export default class App extends Component {
   state = {
-    contacts: [
-      {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
-      {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
-      {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
-      {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
-    ],
-    filter: '',
-    name: '',
-    number: '',
-  };
+    contacts: [],
+    filter: ''
+  }
 
-  updateInput = event => {
-    const {name, value} = event.target
-    this.setState({[name]: value});
-  };
-
-  addNewContact = () => {
-    console.log(this.state);
+  addNewContact = (contact) => {
     const user = {
       id: nanoid(),
-      name: this.state.name,
-      number: this.state.number,
+      name: contact.name,
+      number: contact.number,
     };
-    if (this.state.name !== '') {
+    if (contact.name !== '') {
       this.setState(prefState => ({
-        contacts: [...prefState.contacts, user],
-        name: '',
-        number: ''
+        contacts: [...prefState.contacts, user]
       }));
     }
   };
 
   onFilterChange = (event) => {
-      const {name, value} = event.target
-      this.setState({[name]: value});
+    console.log("Filter changed!")
+    this.setState({filter: event.target.value});
   }
 
   getFilteredContacts = () => {
@@ -59,10 +44,7 @@ export default class App extends Component {
     return (
       <div>
         <Section title="Phonebook">
-          <Phonebook
-            name={this.state.name}
-            tell={this.state.number}
-            updateInput={this.updateInput}
+          <PhonebookInput
             addNewContact={this.addNewContact}
           />
         </Section>        
