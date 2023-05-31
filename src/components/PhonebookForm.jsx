@@ -20,7 +20,7 @@ function onSubmit(event) {
 export const PhonebookForm = ({ addNewContact }) => {
   return (
     <>
-      <form onSubmit={()=>(onSubmit, addNewContact(contact))}>
+      <form onSubmit={()=>{onSubmit(); addNewContact(contact)}}>
         <label>
           Name
           <input

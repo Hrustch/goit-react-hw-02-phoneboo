@@ -33,7 +33,7 @@ export default class App extends Component {
     };
     this.setState((prefState) => ({
       contacts: [...prefState.contacts, user]
-    })
+    }))
   };
 
   onFilterChange = (event) => {
