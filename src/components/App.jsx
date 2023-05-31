@@ -11,13 +11,23 @@ export default class App extends Component {
     filter: ''
   }
 
-  addNewContact = (contact) => {
+  addNewContact = (sentContact) => {
+    for (const contact of this.state.contacts) {
+      if (contact.name === sentContact.name || contact.number === sentContact.number) {
+        console.log("Return!");
+        alert('Such contact already exists! '+  JSON.stringify(contact))
+        return;
+      }
+    }
+    
+    console.log("Writing new user!");
     const user = {
       id: nanoid(),
-      name: contact.name,
-      number: contact.number,
+      name: sentContact.name,
+      number: sentContact.number,
     };
-    if (contact.name !== '') {
+  
+    if (sentContact.name !== '') {
       this.setState(prefState => ({
         contacts: [...prefState.contacts, user]
       }));

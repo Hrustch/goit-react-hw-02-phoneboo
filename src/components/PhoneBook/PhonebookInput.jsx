@@ -36,7 +36,7 @@ export const PhonebookInput = ({addNewContact }) => {
         onChange={updateProps}
       /></label>
       
-      <button type="button" onClick={()=>{
+      <button type="submit" onClick={()=>{
         addNewContact(contact)
         document.getElementById("input_name").value = ""
         document.getElementById("input_tell").value = ""
