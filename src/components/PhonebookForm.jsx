@@ -1,5 +1,4 @@
 import React from 'react';
-import addNewContact from "./App"
 export class PhonebookForm extends React.Component {
   constructor(props) {
     super(props);
