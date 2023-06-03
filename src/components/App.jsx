@@ -11,10 +11,7 @@ export default class App extends Component {
     filter: '',
   };
 
-  addNewContact = (sentContact, event) => {
-    event.preventDefault();
-    document.getElementById('input_name').value = '';
-    document.getElementById('input_tell').value = '';
+  addNewContact = (sentContact) => {
     
     const isExist = this.state.contacts.find((contact) => (contact.name === sentContact.name || contact.number === sentContact.number) );
     if (isExist) {
@@ -55,7 +52,7 @@ export default class App extends Component {
     return (
       <div>
         <Section title="Phonebook">
-          <PhonebookForm addNewContact={this.addNewContact} />
+          <PhonebookForm onSubmit={this.addNewContact} />
         </Section>
         <Section title="Contacts">
           {this.state.contacts.length > 0 ? (
