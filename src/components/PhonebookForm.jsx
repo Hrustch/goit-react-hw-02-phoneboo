@@ -11,16 +11,16 @@ function updateProps(event) {
   console.log(contact);
 }
 
-function onSubmit(event) {
+/* function onSubmit(event) {
   event.preventDefault();  
   document.getElementById('input_name').value = '';
   document.getElementById('input_tell').value = '';
-}
+} */
 
 export const PhonebookForm = ({ addNewContact }) => {
   return (
     <>
-      <form onSubmit={()=>{onSubmit(); addNewContact(contact)}}>
+      <form onSubmit={(event)=>{addNewContact(contact, event)}}>
         <label>
           Name
           <input

@@ -11,20 +11,17 @@ export default class App extends Component {
     filter: '',
   };
 
-  addNewContact = (sentContact) => {
+  addNewContact = (sentContact, event) => {
+    event.preventDefault();
+    document.getElementById('input_name').value = '';
+    document.getElementById('input_tell').value = '';
+    
     const isExist = this.state.contacts.find((contact) => (contact.name === sentContact.name || contact.number === sentContact.number) );
     if (isExist) {
       alert('Such contact already exists!');
       return;
     }
-    /* for (const contact of this.state.contacts) {
-      if (contact.name === sentContact.name || contact.number === sentContact.number) {
-        console.log("Return!");
-        alert('Such contact already exists! '+  JSON.stringify(contact))
-        return;
-      } 
-    }
-    */
+    
     console.log('Writing new user!');
     const user = {
       id: nanoid(),
